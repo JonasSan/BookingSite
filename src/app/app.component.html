@@ -1,29 +1,29 @@
 <h3>
-  Angular 2 Seed
+  RentMyRoom
 </h3>
 <nav>
-	<a [routerLink]="['/']">
+  <a [routerLink]="['/']">
     Home
   </a>
   |
-	<a [routerLink]="['/about']">
-    About
+  <a [routerLink]="['/rent']">
+    Book
   </a>
   |
-	<a [routerLink]="['/github', 'angular']">
-    Github Repos
+  <!-- <a [routerLink]="['/github', 'angular']">
+    Check-out
+  </a> -->
+  <a [routerLink]="['/return']">
+    Check out
   </a>
   |
-	<a [routerLink]="['/contact']">
-    Contact Us
+  <a [routerLink]="['/register']">
+    Register new customer
   </a>
 </nav>
-
+<br />
 <main>
-	<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </main>
 
-
-<footer>
-  © 2017
-</footer>
+<footer></footer>

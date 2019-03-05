@@ -1,0 +1,109 @@
+<div class="container">
+  <h3>Register</h3>
+  <form #form="ngForm" (submit)="submitForm(form)" ngNativeValidate>
+    <!-- CustomerId -->
+
+    <div class="form-group">
+      <label class="headline">First Name</label>
+      <input
+        #firstName="ngModel"
+        required
+        type="text"
+        class="form-control"
+        name="firstName"
+        [ngModel]="model.firstName"
+        (ngModelChange)="firstNameToUpperCase($event)"
+      />
+      <div
+        *ngIf="firstName.invalid && firstName.dirty"
+        class="alert alert-danger"
+      >
+        First Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="headline">Last Name</label>
+      <input
+        #lastName="ngModel"
+        required
+        type="text"
+        class="form-control"
+        name="lastName"
+        [ngModel]="model.lastName"
+        (ngModelChange)="lastNameToUpperCase($event)"
+      />
+      <div
+        *ngIf="lastName.invalid && lastName.dirty"
+        class="alert alert-danger"
+      >
+        Last Name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="headline">Personal identity-number</label>
+      <input
+        #personalIdentityNumber="ngModel"
+        maxlength="10"
+        type="number"
+        class="form-control"
+        required
+        name="personalIdentityNumber"
+        [(ngModel)]="model.personalIdentityNumber"
+      />
+      <div
+        *ngIf="personalIdentityNumber.invalid && personalIdentityNumber.dirty"
+        class="alert alert-danger"
+      >
+        Personal identity-number is required.
+      </div>
+    </div>
+
+    <label class="headline">Payment type:</label>
+    <div class="radio">
+      <label>
+        <input
+          checked
+          type="radio"
+          name="payType"
+          value="creditCard"
+          [(ngModel)]="model.payType"
+        />
+        Creditcard
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input
+          type="radio"
+          name="payType"
+          value="cash"
+          [(ngModel)]="model.payType"
+        />
+        Cash
+      </label>
+    </div>
+    <br />
+
+    <div class="checkbox">
+      <label>
+        <input
+          type="checkbox"
+          name="wantsConfirmationMail"
+          [(ngModel)]="model.wantsConfirmationMail"
+        />
+        Send confirmation e-mail
+      </label>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+      Ok
+    </button>
+  </form>
+
+  <!-- To check if the two-way binding is working: -->
+  <!-- Model: {{ model | json }} -->
+  <br />
+  <!-- To check if the one-way binding is working: -->
+  <!-- Angular: {{ form.value | json }} -->
+</div>
